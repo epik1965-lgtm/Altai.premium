@@ -12,7 +12,6 @@
     <style>
         /* --- 1. SETTINGS & VARIABLES --- */
         :root {
-            /* Palette from Prompt */
             --col-deep-taiga: #1B3A2F;
             --col-graphite: #2C3539;
             --col-sand-light: #F5F7F8;
@@ -24,11 +23,9 @@
             --col-text-muted: #6B7280;
             --col-white: #FFFFFF;
 
-            /* Typography */
             --font-head: 'Playfair Display', serif;
             --font-body: 'Manrope', sans-serif;
 
-            /* Spacing & UI */
             --container-width: 1240px;
             --radius-card: 12px;
             --radius-btn: 8px;
@@ -102,11 +99,9 @@
         }
 
         .section-padding { padding: 100px 0; }
-        
         .text-center { text-align: center; }
         .text-white { color: var(--col-white); }
-        .text-gold { color: var(--col-gold); }
-
+        
         .section-title {
             font-size: 2.5rem;
             margin-bottom: 1rem;
@@ -145,19 +140,23 @@
         /* --- 5. HERO SECTION --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(180deg, rgba(27,58,47,0.3) 0%, rgba(27,58,47,0.6) 100%), 
-                        url('https://images.unsplash.com/photo-1519681393784-d8e5b5a4570e?q=80&w=2070&auto=format&fit=crop');
+            /* ИЗМЕНЕНИЕ: Путь к локальной картинке */
+            background: linear-gradient(180deg, rgba(27,58,47,0.3) 0%, rgba(27,58,47,0.5) 100%), 
+                        url('images/hero-bg.jpg'); 
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             position: relative;
         }
+        /* Фолбэк на случай если картинки нет - серый фон */
+        .hero { background-color: #555; } 
+
         .hero-content {
             max-width: 800px;
         }
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem); /* Responsive typography */
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
             color: var(--col-white);
             margin-bottom: 24px;
         }
@@ -214,7 +213,7 @@
             margin-bottom: 24px;
         }
 
-        /* --- 7. PROCESS (STRIPE STYLE) --- */
+        /* --- 7. PROCESS --- */
         .process { background: var(--col-white-warm); }
         .steps-container {
             margin-top: 60px;
@@ -229,13 +228,13 @@
         .step-number {
             font-family: var(--font-head);
             font-size: 3rem;
-            color: rgba(212, 165, 116, 0.3); /* Gold muted */
+            color: rgba(212, 165, 116, 0.3);
             line-height: 1;
             min-width: 60px;
         }
         .step-content h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--col-deep-taiga); }
         
-        /* --- 8. WHY ALTAI (Cinematic) --- */
+        /* --- 8. WHY ALTAI --- */
         .why-altai {
             background: var(--col-deep-taiga);
             color: var(--col-white);
@@ -261,7 +260,7 @@
         }
         .stat-item p { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin: 0; }
 
-        /* --- 9. TOURS (Much Better Adventures Style) --- */
+        /* --- 9. TOURS --- */
         .tours { background: var(--col-sand-light); }
         .tour-card {
             background: var(--col-white);
@@ -306,7 +305,7 @@
         }
         .price { font-size: 1.2rem; font-weight: 700; color: var(--col-deep-taiga); }
         
-        /* --- 10. FAQ (Accordion) --- */
+        /* --- 10. FAQ --- */
         .faq { background: var(--col-white); }
         .accordion-item {
             border-bottom: 1px solid #E5E7EB;
@@ -333,11 +332,14 @@
 
         /* --- 11. CONTACT FORM --- */
         .contact-section {
-            background: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=2074&auto=format&fit=crop') center/cover;
+            /* ИЗМЕНЕНИЕ: Путь к локальной картинке фона контактов */
+            background: url('images/contact-bg.jpg') center/cover;
             position: relative;
         }
+        .contact-section { background-color: #222; } /* Фолбэк */
+
         .overlay {
-            background: rgba(27, 58, 47, 0.85); /* Deep Taiga Overlay */
+            background: rgba(27, 58, 47, 0.9); /* Чуть темнее оверлей для читаемости */
             position: absolute; inset: 0;
         }
         .contact-container {
@@ -531,7 +533,7 @@
                 <div class="tour-card">
                     <div class="tour-img">
                         <span class="tag">Bestseller</span>
-                        <img src="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?q=80&w=1000&auto=format&fit=crop" alt="Altai Mountains">
+                        <img src="images/tour-1.jpg" alt="Altai Mountains">
                     </div>
                     <div class="tour-info">
                         <h3>Сердце Белухи VIP</h3>
@@ -549,7 +551,7 @@
                 <div class="tour-card">
                     <div class="tour-img">
                         <span class="tag">Business</span>
-                        <img src="https://images.unsplash.com/photo-1533630248331-5618b76c5b06?q=80&w=1000&auto=format&fit=crop" alt="Camping">
+                        <img src="images/tour-2.jpg" alt="Camping">
                     </div>
                     <div class="tour-info">
                         <h3>Стратегия у костра</h3>
@@ -567,7 +569,7 @@
                 <div class="tour-card">
                     <div class="tour-img">
                         <span class="tag">Relax</span>
-                        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1000&auto=format&fit=crop" alt="Lake">
+                        <img src="images/tour-3.jpg" alt="Lake">
                     </div>
                     <div class="tour-info">
                         <h3>Легенды Телецкого</h3>
