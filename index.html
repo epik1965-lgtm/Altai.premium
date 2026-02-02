@@ -140,17 +140,16 @@
         /* --- 5. HERO SECTION --- */
         .hero {
             height: 100vh;
-            /* ИЗМЕНЕНИЕ: Путь к локальной картинке */
+            /* ИСПРАВЛЕНО: Убран путь images/ */
             background: linear-gradient(180deg, rgba(27,58,47,0.3) 0%, rgba(27,58,47,0.5) 100%), 
-                        url('images/hero-bg.jpg'); 
+                        url('hero-bg.jpg'); 
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             position: relative;
+            background-color: #444; /* Цвет на случай долгой загрузки */
         }
-        /* Фолбэк на случай если картинки нет - серый фон */
-        .hero { background-color: #555; } 
 
         .hero-content {
             max-width: 800px;
@@ -332,14 +331,14 @@
 
         /* --- 11. CONTACT FORM --- */
         .contact-section {
-            /* ИЗМЕНЕНИЕ: Путь к локальной картинке фона контактов */
-            background: url('images/contact-bg.jpg') center/cover;
+            /* ИСПРАВЛЕНО: Убран путь images/ */
+            background: url('contact-bg.jpg') center/cover;
             position: relative;
+            background-color: #1B3A2F;
         }
-        .contact-section { background-color: #222; } /* Фолбэк */
 
         .overlay {
-            background: rgba(27, 58, 47, 0.9); /* Чуть темнее оверлей для читаемости */
+            background: rgba(27, 58, 47, 0.85);
             position: absolute; inset: 0;
         }
         .contact-container {
@@ -533,7 +532,7 @@
                 <div class="tour-card">
                     <div class="tour-img">
                         <span class="tag">Bestseller</span>
-                        <img src="images/tour-1.jpg" alt="Altai Mountains">
+                        <img src="tour-1.jpg" alt="Altai Mountains">
                     </div>
                     <div class="tour-info">
                         <h3>Сердце Белухи VIP</h3>
@@ -551,7 +550,7 @@
                 <div class="tour-card">
                     <div class="tour-img">
                         <span class="tag">Business</span>
-                        <img src="images/tour-2.jpg" alt="Camping">
+                        <img src="tour-2.jpg" alt="Camping">
                     </div>
                     <div class="tour-info">
                         <h3>Стратегия у костра</h3>
@@ -569,7 +568,7 @@
                 <div class="tour-card">
                     <div class="tour-img">
                         <span class="tag">Relax</span>
-                        <img src="images/tour-3.jpg" alt="Lake">
+                        <img src="tour-3.jpg" alt="Lake">
                     </div>
                     <div class="tour-info">
                         <h3>Легенды Телецкого</h3>
