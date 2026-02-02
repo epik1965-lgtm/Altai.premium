@@ -7,19 +7,18 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;800;1,400&display=swap" rel="stylesheet">
 
     <style>
         /* =========================================
            1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ (VARIABLES)
            ========================================= */
         :root {
-            /* Цветовая палитра */
-            --col-deep-taiga: #1B3A2F;   /* Темно-зеленый (основной фон) */
-            --col-graphite: #2C3539;     /* Графит */
-            --col-sand-light: #F5F7F8;   /* Светлый песок (фон блоков) */
+            /* Палитра */
+            --col-deep-taiga: #1B3A2F;   /* Темно-зеленый */
+            --col-sand-light: #F5F7F8;   /* Светлый фон */
             --col-white-warm: #FAFAF9;   /* Теплый белый */
-            --col-turquoise: #00B4A8;    /* Бирюза (акцент/кнопки) */
+            --col-turquoise: #00B4A8;    /* Бирюза (кнопки) */
             --col-gold: #D4A574;         /* Золото (детали) */
             
             /* Текст */
@@ -27,20 +26,21 @@
             --col-text-muted: #6B7280;
             --col-white: #FFFFFF;
 
-            /* Типографика */
+            /* Шрифты */
             --font-head: 'Playfair Display', serif;
             --font-body: 'Manrope', sans-serif;
 
-            /* Размеры и отступы */
+            /* UI параметры */
             --container-width: 1240px;
             --radius-card: 12px;
             --radius-btn: 8px;
             --transition: all 0.3s ease;
             --shadow-card: 0 10px 30px rgba(0,0,0,0.06);
+            --shadow-text: 0 2px 10px rgba(0,0,0,0.3); /* Тень для текста на фото */
         }
 
         /* =========================================
-           2. СБРОС И БАЗОВЫЕ СТИЛИ (RESET)
+           2. БАЗОВЫЕ СТИЛИ (RESET)
            ========================================= */
         * {
             box-sizing: border-box;
@@ -49,7 +49,7 @@
         }
         
         html {
-            scroll-behavior: smooth; /* Плавный скролл */
+            scroll-behavior: smooth;
         }
 
         body {
@@ -57,24 +57,21 @@
             color: var(--col-text-main);
             background-color: var(--col-white-warm);
             line-height: 1.6;
-            overflow-x: hidden; /* Скрываем горизонтальный скролл */
+            overflow-x: hidden;
         }
 
-        /* Заголовки */
         h1, h2, h3, h4 {
             font-family: var(--font-head);
             line-height: 1.2;
             margin-bottom: 1rem;
         }
 
-        /* Параграфы */
         p {
             margin-bottom: 1.5rem;
             color: var(--col-text-muted);
             font-size: 1.1rem;
         }
         
-        /* Ссылки и списки */
         a {
             text-decoration: none;
             color: inherit;
@@ -91,7 +88,6 @@
             object-fit: cover;
         }
 
-        /* Контейнер для центрирования контента */
         .container {
             max-width: var(--container-width);
             margin: 0 auto;
@@ -99,26 +95,23 @@
         }
 
         /* =========================================
-           3. UI КОМПОНЕНТЫ (КНОПКИ И ОТСТУПЫ)
+           3. КОМПОНЕНТЫ UI (КНОПКИ)
            ========================================= */
-        
-        /* Базовая кнопка */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             padding: 18px 36px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1rem;
             border-radius: var(--radius-btn);
             cursor: pointer;
             transition: var(--transition);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             border: none;
         }
 
-        /* Основная кнопка (Бирюзовая) */
         .btn-primary {
             background-color: var(--col-turquoise);
             color: var(--col-white);
@@ -129,46 +122,38 @@
         .btn-primary:hover {
             background-color: #00968c;
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 180, 168, 0.4);
         }
 
-        /* Кнопка контурная (Прозрачная) */
         .btn-outline {
-            background: transparent;
+            background: rgba(255,255,255,0.1);
             color: var(--col-white);
             border: 1px solid rgba(255,255,255,0.6);
+            backdrop-filter: blur(5px);
         }
 
         .btn-outline:hover {
             border-color: var(--col-white);
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.2);
         }
 
-        /* Отступы секций */
         .section-padding {
             padding: 100px 0;
         }
         
-        /* Утилиты текста */
         .text-center { text-align: center; }
         .text-white { color: var(--col-white); }
-        .text-gold { color: var(--col-gold); }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
+        .section-title { font-size: 2.5rem; margin-bottom: 1rem; }
         
         /* =========================================
-           4. ШАПКА САЙТА (HEADER)
+           4. ШАПКА (HEADER)
            ========================================= */
         header {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
+            top: 0; left: 0; width: 100%; z-index: 100;
             padding: 24px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            transition: var(--transition);
         }
 
         .nav-flex {
@@ -181,8 +166,9 @@
             font-family: var(--font-head);
             font-size: 1.8rem;
             color: var(--col-white);
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-shadow: var(--shadow-text);
         }
 
         .nav-links {
@@ -193,7 +179,9 @@
         .nav-links a {
             color: rgba(255,255,255,0.9);
             font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .nav-links a:hover {
@@ -201,74 +189,83 @@
         }
 
         /* =========================================
-           5. ПЕРВЫЙ ЭКРАН (HERO SECTION)
+           5. ПЕРВЫЙ ЭКРАН (HERO) - ПРОДАЮЩАЯ ВЕРСИЯ
            ========================================= */
         .hero {
-            height: 100vh; /* На всю высоту экрана */
+            min-height: 100vh; /* Гарантируем высоту на весь экран */
             width: 100%;
-            /* ФОН: Градиент + Картинка */
-            background: linear-gradient(180deg, rgba(27,58,47,0.3) 0%, rgba(27,58,47,0.5) 100%), 
-                        url('./hero-bg.jpg'); 
+            /* Фон: Затемнение + Картинка */
+            background: linear-gradient(180deg, rgba(27,58,47,0.4) 0%, rgba(27,58,47,0.6) 100%), 
+                        url('hero-bg.jpg'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-color: #444; /* Резервный цвет */
+            background-color: #555; /* Цвет заглушки */
             
             display: flex;
             align-items: center;
             position: relative;
+            padding-top: 80px; /* Компенсация шапки */
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             position: relative;
             z-index: 2;
         }
 
+        /* Улучшенный заголовок */
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem); /* Адаптивный шрифт */
+            /* Делаем шрифт значительно крупнее и жирнее */
+            font-size: clamp(3rem, 7vw, 6rem);
             color: var(--col-white);
-            margin-bottom: 24px;
-            font-weight: 700;
+            margin-bottom: 30px;
+            font-weight: 800;
+            line-height: 1.1;
+            text-shadow: var(--shadow-text); /* Тень для контраста */
         }
 
-        .hero p {
-            color: rgba(255,255,255,0.9);
-            font-size: 1.25rem;
-            margin-bottom: 40px;
-            max-width: 600px;
+        /* Улучшенный подзаголовок */
+        .hero p.lead {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.35rem;
+            margin-bottom: 50px;
+            max-width: 700px;
+            font-weight: 500;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.5);
         }
 
         .hero-buttons {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
-        /* Маркеры доверия (галочки) */
         .trust-markers {
             display: flex;
-            gap: 24px;
-            color: rgba(255,255,255,0.8);
-            font-size: 0.9rem;
+            gap: 30px;
+            color: rgba(255,255,255,0.9);
+            font-size: 1rem;
             flex-wrap: wrap;
+            font-weight: 500;
         }
 
         .marker {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
 
         .marker span {
             color: var(--col-turquoise);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
         }
 
         /* =========================================
-           6. СЕКЦИЯ СЕГМЕНТАЦИИ (О НАС)
+           6. БЛОК "О НАС" (СЕГМЕНТЫ)
            ========================================= */
         .segments {
             background: var(--col-sand-light);
@@ -343,7 +340,7 @@
         .step-number {
             font-family: var(--font-head);
             font-size: 3rem;
-            color: rgba(212, 165, 116, 0.3); /* Полупрозрачное золото */
+            color: rgba(212, 165, 116, 0.3);
             line-height: 1;
             min-width: 60px;
             text-align: right;
@@ -356,7 +353,7 @@
         }
         
         /* =========================================
-           8. ПОЧЕМУ АЛТАЙ (ТЕМНАЯ СЕКЦИЯ)
+           8. ПОЧЕМУ АЛТАЙ (ТЕМНЫЙ БЛОК)
            ========================================= */
         .why-altai {
             background: var(--col-deep-taiga);
@@ -418,7 +415,7 @@
 
         .tour-img {
             height: 280px;
-            background-color: #ccc;
+            background-color: #ccc; /* Цвет заглушки, пока грузится фото */
             position: relative;
         }
 
@@ -426,6 +423,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .tour-card:hover .tour-img img {
+            transform: scale(1.05); /* Легкое увеличение при наведении */
         }
 
         .tag {
@@ -438,7 +440,7 @@
             font-size: 0.75rem;
             text-transform: uppercase;
             border-radius: 4px;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 0.5px;
         }
 
@@ -453,6 +455,7 @@
             font-size: 1.4rem;
             color: var(--col-deep-taiga);
             margin-bottom: 10px;
+            font-weight: 700;
         }
 
         .tour-meta {
@@ -469,14 +472,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: auto; /* Прижимает к низу */
+            margin-top: auto;
             padding-top: 20px;
         }
 
         .price {
-            font-size: 1.2rem;
-            font-weight: 700;
+            font-size: 1.3rem;
+            font-weight: 800;
             color: var(--col-deep-taiga);
+            font-family: var(--font-head);
         }
         
         /* =========================================
@@ -530,27 +534,25 @@
             transition: transform 0.3s;
         }
 
-        /* Класс active добавляется через JS */
         .active .icon-plus {
             transform: rotate(45deg);
         }
 
         .active .accordion-body {
-            max-height: 300px; /* Достаточная высота для раскрытия */
+            max-height: 300px;
         }
 
         /* =========================================
            11. ФОРМА КОНТАКТОВ
            ========================================= */
         .contact-section {
-            /* ФОН: Темный + Картинка */
-            background: url('./contact-bg.jpg') center/cover no-repeat;
+            background: url('contact-bg.jpg') center/cover no-repeat;
             position: relative;
-            background-color: #1B3A2F;
+            background-color: #1B3A2F; /* Цвет заглушки */
         }
 
         .overlay {
-            background: rgba(27, 58, 47, 0.85); /* Затемнение */
+            background: rgba(27, 58, 47, 0.85);
             position: absolute;
             inset: 0;
             z-index: 1;
@@ -598,10 +600,6 @@
         .form-control:focus {
             border-color: var(--col-turquoise);
             box-shadow: 0 0 0 3px rgba(0, 180, 168, 0.1);
-        }
-
-        select.form-control {
-            cursor: pointer;
         }
 
         /* =========================================
@@ -658,7 +656,7 @@
         }
 
         /* =========================================
-           13. АДАПТИВНОСТЬ (MOBILE)
+           13. АДАПТИВНОСТЬ (МОБИЛЬНАЯ ВЕРСИЯ) - ИСПРАВЛЕНИЯ
            ========================================= */
         @media (max-width: 992px) {
             .why-content {
@@ -668,39 +666,78 @@
             .contact-container {
                 grid-template-columns: 1fr;
             }
+             /* На планшетах тоже увеличиваем шрифт */
+            .hero h1 { font-size: 4rem; }
         }
 
+        /* ТЕЛЕФОНЫ (Меньше 768px) */
         @media (max-width: 768px) {
+            /* 1. Исправление шапки */
+            header {
+                padding: 15px 0;
+                background: rgba(27, 58, 47, 0.8); /* Затемняем шапку на мобильном */
+                backdrop-filter: blur(10px);
+            }
+            .nav-flex {
+                flex-direction: column; /* Ставим лого и кнопку в колонку */
+                gap: 15px;
+            }
             .nav-links {
-                display: none; /* Скрываем меню на мобильном */
+                display: none; /* Скрываем меню */
+            }
+            .logo { font-size: 1.5rem; }
+            
+            /* 2. Исправление первого экрана (Hero) */
+            .hero {
+                align-items: flex-start; /* Выравниваем контент по верху */
+                /* ВАЖНО: Большой отступ сверху, чтобы текст не наезжал на шапку */
+                padding-top: 160px; 
+                text-align: center; /* Центрируем текст */
             }
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem; /* Уменьшаем заголовок, но оставляем крупным */
+                line-height: 1.15;
+            }
+            .hero p.lead {
+                font-size: 1.1rem;
+                margin-bottom: 30px;
             }
             .hero-buttons {
-                flex-direction: column;
+                flex-direction: column; /* Кнопки друг под другом */
                 width: 100%;
+                gap: 15px;
             }
             .btn {
                 width: 100%;
+                padding: 16px 24px; /* Чуть меньше паддинги */
             }
-            .grid-3 {
-                grid-template-columns: 1fr;
+            .trust-markers {
+                justify-content: center; /* Центрируем маркеры */
+                gap: 15px;
             }
+            
+            /* 3. Остальные блоки */
+            .section-padding { padding: 60px 0; }
+            .section-title { font-size: 2rem; }
+            
+            .grid-3 { grid-template-columns: 1fr; }
+            
             .step-item {
                 flex-direction: column;
                 gap: 15px;
             }
-            .step-number {
-                text-align: left;
-            }
+            .step-number { text-align: left; font-size: 2.5rem; }
+            
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
+                text-align: center;
             }
             .stats-grid {
+                grid-template-columns: 1fr 1fr; /* Оставляем 2 колонки для статистики */
                 gap: 20px;
             }
+            .form-box { padding: 25px; }
         }
     </style>
 </head>
@@ -715,14 +752,14 @@
                 <a href="#corporate">Для бизнеса</a>
                 <a href="#faq">FAQ</a>
             </nav>
-            <a href="#contact" class="btn btn-outline" style="padding: 10px 24px; font-size: 0.85rem;">Связаться</a>
+            <a href="#contact" class="btn btn-outline" style="padding: 12px 24px; font-size: 0.9rem;">Связаться</a>
         </div>
     </header>
 
     <section class="hero">
         <div class="container hero-content">
             <h1>Алтай под ключ для команд и первых лиц</h1>
-            <p>Экспедиции премиум-класса и стратегические сессии в местах силы. <br>Полная приватность, вертолетная заброска, сервис уровня 5*.</p>
+            <p class="lead">Экспедиции премиум-класса и стратегические сессии в местах силы. <br>Полная приватность, вертолетная заброска, сервис уровня 5*.</p>
             
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary">Получить программу тура</a>
@@ -740,7 +777,7 @@
     <section class="section-padding segments" id="about">
         <div class="container">
             <h2 class="text-center section-title" style="color: var(--col-deep-taiga)">Для кого мы создаём маршруты</h2>
-            <p class="text-center" style="max-width: 600px; margin: 0 auto;">Каждый тур — под конкретную задачу и запрос клиента. Мы не продаем массовые путевки.</p>
+            <p class="text-center" style="max-width: 600px; margin: 0 auto 40px;">Каждый тур — под конкретную задачу и запрос клиента. Мы не продаем массовые путевки.</p>
             
             <div class="grid-3">
                 <div class="segment-card">
@@ -797,7 +834,7 @@
             <div class="why-content">
                 <div>
                     <h2 class="section-title">Почему именно Алтай</h2>
-                    <p class="text-white">Алтай — это территория силы. Здесь, вдали от офисного шума, рождаются самые смелые идеи и принимаются ключевые решения. Мы покажем вам Алтай, который недоступен обычному туристу.</p>
+                    <p class="text-white" style="font-size: 1.2rem;">Алтай — это территория силы. Здесь, вдали от офисного шума, рождаются самые смелые идеи и принимаются ключевые решения. Мы покажем вам Алтай, который недоступен обычному туристу.</p>
                     <p class="text-white">Мы работаем здесь более 10 лет и знаем каждую тропу, каждое ущелье и каждого человека, которому можно доверять.</p>
                 </div>
                 <div class="stats-grid">
@@ -830,7 +867,7 @@
                 <div class="tour-card">
                     <div class="tour-img">
                         <span class="tag">Bestseller</span>
-                        <img src="./tour-1.jpg" alt="Altai Mountains">
+                        <img src="tour-1.jpg" alt="Altai Mountains">
                     </div>
                     <div class="tour-info">
                         <h3>Сердце Белухи VIP</h3>
@@ -840,7 +877,7 @@
                         <p>Комбинированный тур с проживанием в премиум-шале и заброской к подножью главной вершины Сибири.</p>
                         <div class="price-row">
                             <span class="price">от 350 000 ₽</span>
-                            <a href="#contact" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.8rem;">Программа</a>
+                            <a href="#contact" class="btn btn-primary" style="padding: 12px 24px; font-size: 0.9rem;">Программа</a>
                         </div>
                     </div>
                 </div>
@@ -848,7 +885,7 @@
                 <div class="tour-card">
                     <div class="tour-img">
                         <span class="tag">Business</span>
-                        <img src="./tour-2.jpg" alt="Camping">
+                        <img src="tour-2.jpg" alt="Camping">
                     </div>
                     <div class="tour-info">
                         <h3>Стратегия у костра</h3>
@@ -858,7 +895,7 @@
                         <p>Специальная программа для команд топ-менеджеров. Фасилитация, нет-воркинг и полная перезагрузка.</p>
                         <div class="price-row">
                             <span class="price">по запросу</span>
-                            <a href="#contact" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.8rem;">Программа</a>
+                            <a href="#contact" class="btn btn-primary" style="padding: 12px 24px; font-size: 0.9rem;">Программа</a>
                         </div>
                     </div>
                 </div>
@@ -866,7 +903,7 @@
                 <div class="tour-card">
                     <div class="tour-img">
                         <span class="tag">Relax</span>
-                        <img src="./tour-3.jpg" alt="Lake">
+                        <img src="tour-3.jpg" alt="Lake">
                     </div>
                     <div class="tour-info">
                         <h3>Легенды Телецкого</h3>
@@ -876,7 +913,7 @@
                         <p>Индивидуальный круиз по золотому озеру, скрытые водопады и SPA-программа в уединенном лодже.</p>
                         <div class="price-row">
                             <span class="price">от 280 000 ₽</span>
-                            <a href="#contact" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.8rem;">Программа</a>
+                            <a href="#contact" class="btn btn-primary" style="padding: 12px 24px; font-size: 0.9rem;">Программа</a>
                         </div>
                     </div>
                 </div>
@@ -925,10 +962,10 @@
         <div class="container contact-container">
             <div class="text-white">
                 <h2 class="section-title text-white">Готовы к путешествию?</h2>
-                <p class="text-white" style="opacity: 0.9;">Оставьте заявку, и мы свяжемся с вами в течение 2 часов. Мы обсудим ваши задачи и предложим идеальный сценарий экспедиции.</p>
+                <p class="text-white" style="opacity: 0.9; font-size: 1.2rem;">Оставьте заявку, и мы свяжемся с вами в течение 2 часов. Мы обсудим ваши задачи и предложим идеальный сценарий экспедиции.</p>
                 <div style="margin-top: 40px;">
-                    <p class="text-white">Или напишите нам:</p>
-                    <a href="#" style="display: block; color: var(--col-turquoise); font-size: 1.2rem; font-weight: 600; margin-bottom: 10px;">WhatsApp: +7 999 000-00-00</a>
+                    <p class="text-white" style="font-weight: 600;">Или напишите нам:</p>
+                    <a href="#" style="display: block; color: var(--col-turquoise); font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; font-family: var(--font-head);">WhatsApp: +7 999 000-00-00</a>
                     <a href="#" style="display: block; color: var(--col-white); font-size: 1.2rem;">hello@altailegend.ru</a>
                 </div>
             </div>
@@ -956,7 +993,7 @@
                         <label class="form-label">Комментарий</label>
                         <textarea class="form-control" rows="3" placeholder="Даты, пожелания..."></textarea>
                     </div>
-                    <button type="button" class="btn btn-primary" style="width: 100%;">Получить программу</button>
+                    <button type="button" class="btn btn-primary" style="width: 100%; padding: 20px; font-size: 1.1rem;">Получить программу</button>
                     <p style="font-size: 0.75rem; color: #999; margin-top: 15px; text-align: center;">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
                 </form>
             </div>
@@ -1003,14 +1040,13 @@
             });
         });
 
-        // Плавный скролл по якорям
+        // Плавный скролл
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
