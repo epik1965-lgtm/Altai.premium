@@ -10,22 +10,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
-        /* --- 1. SETTINGS & VARIABLES --- */
+        /* =========================================
+           1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ (VARIABLES)
+           ========================================= */
         :root {
-            --col-deep-taiga: #1B3A2F;
-            --col-graphite: #2C3539;
-            --col-sand-light: #F5F7F8;
-            --col-white-warm: #FAFAF9;
-            --col-turquoise: #00B4A8;
-            --col-gold: #D4A574;
+            /* Цветовая палитра */
+            --col-deep-taiga: #1B3A2F;   /* Темно-зеленый (основной фон) */
+            --col-graphite: #2C3539;     /* Графит */
+            --col-sand-light: #F5F7F8;   /* Светлый песок (фон блоков) */
+            --col-white-warm: #FAFAF9;   /* Теплый белый */
+            --col-turquoise: #00B4A8;    /* Бирюза (акцент/кнопки) */
+            --col-gold: #D4A574;         /* Золото (детали) */
             
+            /* Текст */
             --col-text-main: #1F2937;
             --col-text-muted: #6B7280;
             --col-white: #FFFFFF;
 
+            /* Типографика */
             --font-head: 'Playfair Display', serif;
             --font-body: 'Manrope', sans-serif;
 
+            /* Размеры и отступы */
             --container-width: 1240px;
             --radius-card: 12px;
             --radius-btn: 8px;
@@ -33,36 +39,70 @@
             --shadow-card: 0 10px 30px rgba(0,0,0,0.06);
         }
 
-        /* --- 2. RESET & BASE --- */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        /* =========================================
+           2. СБРОС И БАЗОВЫЕ СТИЛИ (RESET)
+           ========================================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         
+        html {
+            scroll-behavior: smooth; /* Плавный скролл */
+        }
+
         body {
             font-family: var(--font-body);
             color: var(--col-text-main);
             background-color: var(--col-white-warm);
             line-height: 1.6;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Скрываем горизонтальный скролл */
         }
 
+        /* Заголовки */
         h1, h2, h3, h4 {
             font-family: var(--font-head);
             line-height: 1.2;
             margin-bottom: 1rem;
         }
 
-        p { margin-bottom: 1.5rem; color: var(--col-text-muted); font-size: 1.1rem; }
+        /* Параграфы */
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--col-text-muted);
+            font-size: 1.1rem;
+        }
         
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        ul { list-style: none; }
-        img { max-width: 100%; display: block; object-fit: cover; }
+        /* Ссылки и списки */
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
 
+        /* Контейнер для центрирования контента */
         .container {
             max-width: var(--container-width);
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* --- 3. COMPONENTS --- */
+        /* =========================================
+           3. UI КОМПОНЕНТЫ (КНОПКИ И ОТСТУПЫ)
+           ========================================= */
+        
+        /* Базовая кнопка */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -75,39 +115,52 @@
             transition: var(--transition);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            border: none;
         }
 
+        /* Основная кнопка (Бирюзовая) */
         .btn-primary {
             background-color: var(--col-turquoise);
             color: var(--col-white);
             border: 1px solid var(--col-turquoise);
             box-shadow: 0 4px 15px rgba(0, 180, 168, 0.3);
         }
+
         .btn-primary:hover {
             background-color: #00968c;
             transform: translateY(-2px);
         }
 
+        /* Кнопка контурная (Прозрачная) */
         .btn-outline {
             background: transparent;
             color: var(--col-white);
             border: 1px solid rgba(255,255,255,0.6);
         }
+
         .btn-outline:hover {
             border-color: var(--col-white);
             background: rgba(255,255,255,0.1);
         }
 
-        .section-padding { padding: 100px 0; }
+        /* Отступы секций */
+        .section-padding {
+            padding: 100px 0;
+        }
+        
+        /* Утилиты текста */
         .text-center { text-align: center; }
         .text-white { color: var(--col-white); }
-        
+        .text-gold { color: var(--col-gold); }
+
         .section-title {
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
         
-        /* --- 4. HEADER --- */
+        /* =========================================
+           4. ШАПКА САЙТА (HEADER)
+           ========================================= */
         header {
             position: absolute;
             top: 0;
@@ -117,11 +170,13 @@
             padding: 24px 0;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
+
         .nav-flex {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .logo {
             font-family: var(--font-head);
             font-size: 1.8rem;
@@ -129,76 +184,120 @@
             font-weight: 700;
             letter-spacing: 1px;
         }
-        .nav-links { display: flex; gap: 32px; }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
         .nav-links a {
             color: rgba(255,255,255,0.9);
             font-size: 0.95rem;
             font-weight: 500;
         }
-        .nav-links a:hover { color: var(--col-turquoise); }
 
-        /* --- 5. HERO SECTION --- */
+        .nav-links a:hover {
+            color: var(--col-turquoise);
+        }
+
+        /* =========================================
+           5. ПЕРВЫЙ ЭКРАН (HERO SECTION)
+           ========================================= */
         .hero {
-            height: 100vh;
-            /* ИСПРАВЛЕНО: Убран путь images/ */
+            height: 100vh; /* На всю высоту экрана */
+            width: 100%;
+            /* ФОН: Градиент + Картинка */
             background: linear-gradient(180deg, rgba(27,58,47,0.3) 0%, rgba(27,58,47,0.5) 100%), 
-                        url('hero-bg.jpg'); 
+                        url('./hero-bg.jpg'); 
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
+            background-color: #444; /* Резервный цвет */
+            
             display: flex;
             align-items: center;
             position: relative;
-            background-color: #444; /* Цвет на случай долгой загрузки */
         }
 
         .hero-content {
             max-width: 800px;
+            position: relative;
+            z-index: 2;
         }
+
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(2.5rem, 5vw, 4.5rem); /* Адаптивный шрифт */
             color: var(--col-white);
             margin-bottom: 24px;
+            font-weight: 700;
         }
+
         .hero p {
             color: rgba(255,255,255,0.9);
             font-size: 1.25rem;
             margin-bottom: 40px;
+            max-width: 600px;
         }
+
         .hero-buttons {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
             margin-bottom: 40px;
         }
+
+        /* Маркеры доверия (галочки) */
         .trust-markers {
             display: flex;
             gap: 24px;
             color: rgba(255,255,255,0.8);
             font-size: 0.9rem;
+            flex-wrap: wrap;
         }
-        .marker { display: flex; align-items: center; gap: 8px; }
-        .marker span { color: var(--col-turquoise); font-size: 1.2rem; }
 
-        /* --- 6. SEGMENTATION --- */
-        .segments { background: var(--col-sand-light); }
+        .marker {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .marker span {
+            color: var(--col-turquoise);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* =========================================
+           6. СЕКЦИЯ СЕГМЕНТАЦИИ (О НАС)
+           ========================================= */
+        .segments {
+            background: var(--col-sand-light);
+        }
+
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
+
         .segment-card {
             background: var(--col-white);
             padding: 40px;
             border-radius: var(--radius-card);
             border: 1px solid #E5E7EB;
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
+
         .segment-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-card);
             border-color: var(--col-gold);
         }
+
         .icon-box {
             width: 60px;
             height: 60px;
@@ -212,69 +311,123 @@
             margin-bottom: 24px;
         }
 
-        /* --- 7. PROCESS --- */
-        .process { background: var(--col-white-warm); }
+        .segment-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--col-deep-taiga);
+        }
+
+        /* =========================================
+           7. ПРОЦЕСС РАБОТЫ
+           ========================================= */
+        .process {
+            background: var(--col-white-warm);
+        }
+
         .steps-container {
             margin-top: 60px;
             position: relative;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
+
         .step-item {
             display: flex;
             gap: 30px;
             margin-bottom: 40px;
             position: relative;
+            align-items: flex-start;
         }
+
         .step-number {
             font-family: var(--font-head);
             font-size: 3rem;
-            color: rgba(212, 165, 116, 0.3);
+            color: rgba(212, 165, 116, 0.3); /* Полупрозрачное золото */
             line-height: 1;
             min-width: 60px;
+            text-align: right;
         }
-        .step-content h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--col-deep-taiga); }
+
+        .step-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--col-deep-taiga);
+        }
         
-        /* --- 8. WHY ALTAI --- */
+        /* =========================================
+           8. ПОЧЕМУ АЛТАЙ (ТЕМНАЯ СЕКЦИЯ)
+           ========================================= */
         .why-altai {
             background: var(--col-deep-taiga);
             color: var(--col-white);
             position: relative;
             overflow: hidden;
         }
+
         .why-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 80px;
             align-items: center;
         }
+
         .stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 40px;
             margin-top: 40px;
         }
+
         .stat-item h4 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--col-turquoise);
             margin-bottom: 5px;
+            font-weight: 700;
+            line-height: 1;
         }
-        .stat-item p { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin: 0; }
 
-        /* --- 9. TOURS --- */
-        .tours { background: var(--col-sand-light); }
+        .stat-item p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* =========================================
+           9. КАТАЛОГ ТУРОВ
+           ========================================= */
+        .tours {
+            background: var(--col-sand-light);
+        }
+
         .tour-card {
             background: var(--col-white);
             border-radius: var(--radius-card);
             overflow: hidden;
             box-shadow: var(--shadow-card);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
-        .tour-card:hover { transform: translateY(-8px); }
+
+        .tour-card:hover {
+            transform: translateY(-8px);
+        }
+
         .tour-img {
             height: 280px;
             background-color: #ccc;
             position: relative;
         }
-        .tour-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        .tour-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .tag {
             position: absolute;
             top: 20px;
@@ -285,8 +438,23 @@
             font-size: 0.75rem;
             text-transform: uppercase;
             border-radius: 4px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
-        .tour-info { padding: 30px; }
+
+        .tour-info {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tour-info h3 {
+            font-size: 1.4rem;
+            color: var(--col-deep-taiga);
+            margin-bottom: 10px;
+        }
+
         .tour-meta {
             display: flex;
             gap: 15px;
@@ -296,51 +464,98 @@
             padding-bottom: 15px;
             border-bottom: 1px solid #eee;
         }
+
         .price-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 20px;
+            margin-top: auto; /* Прижимает к низу */
+            padding-top: 20px;
         }
-        .price { font-size: 1.2rem; font-weight: 700; color: var(--col-deep-taiga); }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--col-deep-taiga);
+        }
         
-        /* --- 10. FAQ --- */
-        .faq { background: var(--col-white); }
+        /* =========================================
+           10. ЧАСТЫЕ ВОПРОСЫ (FAQ)
+           ========================================= */
+        .faq {
+            background: var(--col-white);
+        }
+
+        .accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         .accordion-item {
             border-bottom: 1px solid #E5E7EB;
             padding: 24px 0;
         }
+
         .accordion-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
             font-family: var(--font-head);
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             color: var(--col-deep-taiga);
+            transition: color 0.3s;
         }
+
+        .accordion-header:hover {
+            color: var(--col-turquoise);
+        }
+
         .accordion-body {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.4s ease;
         }
-        .accordion-body p { margin-top: 15px; font-size: 1rem; }
-        .icon-plus { color: var(--col-turquoise); font-size: 1.5rem; transition: transform 0.3s; }
-        .active .icon-plus { transform: rotate(45deg); }
-        .active .accordion-body { max-height: 200px; }
 
-        /* --- 11. CONTACT FORM --- */
+        .accordion-body p {
+            margin-top: 15px;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .icon-plus {
+            color: var(--col-turquoise);
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        /* Класс active добавляется через JS */
+        .active .icon-plus {
+            transform: rotate(45deg);
+        }
+
+        .active .accordion-body {
+            max-height: 300px; /* Достаточная высота для раскрытия */
+        }
+
+        /* =========================================
+           11. ФОРМА КОНТАКТОВ
+           ========================================= */
         .contact-section {
-            /* ИСПРАВЛЕНО: Убран путь images/ */
-            background: url('contact-bg.jpg') center/cover;
+            /* ФОН: Темный + Картинка */
+            background: url('./contact-bg.jpg') center/cover no-repeat;
             position: relative;
             background-color: #1B3A2F;
         }
 
         .overlay {
-            background: rgba(27, 58, 47, 0.85);
-            position: absolute; inset: 0;
+            background: rgba(27, 58, 47, 0.85); /* Затемнение */
+            position: absolute;
+            inset: 0;
+            z-index: 1;
         }
+
         .contact-container {
             position: relative;
             z-index: 2;
@@ -349,13 +564,26 @@
             gap: 60px;
             align-items: start;
         }
+
         .form-box {
             background: var(--col-white);
             padding: 40px;
             border-radius: var(--radius-card);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
-        .form-group { margin-bottom: 20px; }
-        .form-label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--col-deep-taiga);
+        }
+
         .form-control {
             width: 100%;
             padding: 14px;
@@ -366,43 +594,113 @@
             outline: none;
             transition: var(--transition);
         }
+
         .form-control:focus {
             border-color: var(--col-turquoise);
             box-shadow: 0 0 0 3px rgba(0, 180, 168, 0.1);
         }
 
-        /* --- 12. FOOTER --- */
+        select.form-control {
+            cursor: pointer;
+        }
+
+        /* =========================================
+           12. ПОДВАЛ (FOOTER)
+           ========================================= */
         footer {
             background: #111;
             color: #9CA3AF;
             padding: 80px 0 40px;
             font-size: 0.9rem;
         }
+
         .footer-grid {
             display: grid;
             grid-template-columns: 1.5fr 1fr 1fr;
             gap: 40px;
             margin-bottom: 60px;
         }
-        .footer-logo { color: var(--col-white); font-family: var(--font-head); font-size: 1.5rem; margin-bottom: 20px; display: block; }
-        .footer-h { color: var(--col-white); margin-bottom: 20px; font-weight: 600; }
-        .footer-links li { margin-bottom: 12px; }
-        .footer-links a:hover { color: var(--col-turquoise); }
+
+        .footer-logo {
+            color: var(--col-white);
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: block;
+            font-weight: 700;
+        }
+
+        .footer-h {
+            color: var(--col-white);
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--col-turquoise);
+        }
+
         .copyright {
             border-top: 1px solid #333;
             padding-top: 30px;
             text-align: center;
             font-size: 0.8rem;
+            color: #666;
         }
 
-        /* Mobile */
+        /* =========================================
+           13. АДАПТИВНОСТЬ (MOBILE)
+           ========================================= */
+        @media (max-width: 992px) {
+            .why-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .why-content, .contact-container, .grid-3 { grid-template-columns: 1fr; }
-            .hero-buttons { flex-direction: column; }
-            .btn { width: 100%; }
-            .step-item { flex-direction: column; gap: 10px; }
-            .footer-grid { grid-template-columns: 1fr; }
+            .nav-links {
+                display: none; /* Скрываем меню на мобильном */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn {
+                width: 100%;
+            }
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            .step-item {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .step-number {
+                text-align: left;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .stats-grid {
+                gap: 20px;
+            }
         }
     </style>
 </head>
@@ -532,7 +830,7 @@
                 <div class="tour-card">
                     <div class="tour-img">
                         <span class="tag">Bestseller</span>
-                        <img src="tour-1.jpg" alt="Altai Mountains">
+                        <img src="./tour-1.jpg" alt="Altai Mountains">
                     </div>
                     <div class="tour-info">
                         <h3>Сердце Белухи VIP</h3>
@@ -550,7 +848,7 @@
                 <div class="tour-card">
                     <div class="tour-img">
                         <span class="tag">Business</span>
-                        <img src="tour-2.jpg" alt="Camping">
+                        <img src="./tour-2.jpg" alt="Camping">
                     </div>
                     <div class="tour-info">
                         <h3>Стратегия у костра</h3>
@@ -568,7 +866,7 @@
                 <div class="tour-card">
                     <div class="tour-img">
                         <span class="tag">Relax</span>
-                        <img src="tour-3.jpg" alt="Lake">
+                        <img src="./tour-3.jpg" alt="Lake">
                     </div>
                     <div class="tour-info">
                         <h3>Легенды Телецкого</h3>
@@ -587,7 +885,7 @@
     </section>
 
     <section class="section-padding faq" id="faq">
-        <div class="container" style="max-width: 800px;">
+        <div class="container">
             <h2 class="section-title text-center" style="color: var(--col-deep-taiga)">Частые вопросы</h2>
             
             <div class="accordion">
@@ -697,7 +995,7 @@
     </footer>
 
     <script>
-        // Accordion functionality
+        // Аккордеон
         document.querySelectorAll('.accordion-header').forEach(item => {
             item.addEventListener('click', event => {
                 const parent = item.parentElement;
@@ -705,13 +1003,14 @@
             });
         });
 
-        // Smooth Scroll
+        // Плавный скролл по якорям
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
     </script>
